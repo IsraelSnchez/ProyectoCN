@@ -4,12 +4,14 @@ const router = express.Router();
 
 const { UsersController } = require('../controllers');
 const { UsersValidator } = require('../validators');
+const { verifyToken } = require('../middlewares');
 
-router.post('/api/v1/users',
+router.post('/users',
   UsersValidator.create,
   UsersController.create);
 
-router.get('/api/v1/users',
+router.get('/users',
+  verifyToken,
   UsersController.findAll);
 
 module.exports = router;
