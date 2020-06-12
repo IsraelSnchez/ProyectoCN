@@ -14,6 +14,9 @@ const UsersSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
+  // profile_img: {
+  //   type: String -> // url de la imagen que esta almacenada en otro servidor
+  // },
   email: {
     type: String,
     required: true,
@@ -29,6 +32,28 @@ const UsersSchema = mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  posts: {
+    images: [{ type: String }],
+    content: { type: String },
+    date: { type: Date, default: Date.now() },
+    tags: [{ type: String }],
+  },
+  /*
+  // Ejemplo de manejar embebido cardinalidad de 1-1
+  // Reforzar un historial
+  products: {
+    street_name: {},
+    zip_code: {},
+    city: {},
+    country: {},
+  },
+  // Ejemplo de manejar referenciada la cardinalidad de 1-1
+  // Reforzar la integridad refencial
+  products_ref: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Adresses',
+  },
+  */
 });
 
 // eslint-disable-next-line func-names
